@@ -1,0 +1,25 @@
+<%= form_with(model: @newblog, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @newblog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @newblog.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @newblog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="newblog_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="newblog_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "ブログ一覧画面にもどる", newblogs_path %>
